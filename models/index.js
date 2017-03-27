@@ -6,15 +6,6 @@ const Sequelize = require('sequelize');
 const basename  = path.basename(module.filename);
 const db        = {};
 
-// const sequelize = new Sequelize(
-//   process.env.POSTGRES_DATABASE, 
-//   process.env.POSTGRES_USERNAME, 
-//   process.env.POSTGRES_PASSWORD,
-//   {
-//     "host": process.env.POSTGRES_HOST,
-//     "dialect": process.env.POSTGRES_DIALECT
-//   });
-
 const sequelize = new Sequelize(process.env.DATABASE_URL);
 
 sequelize.authenticate();
@@ -22,7 +13,9 @@ sequelize.authenticate();
 fs
   .readdirSync(__dirname)
   .filter((file) => {
-    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
+    return (file.indexOf('.') !== 0) && 
+           (file !== basename) && 
+           (file.slice(-3) === '.js');
   })
   .forEach((file) => {
     const model = sequelize['import'](path.join(__dirname, file));

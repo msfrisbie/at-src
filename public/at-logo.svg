@@ -1,0 +1,81 @@
+<svg width="550" height="550" 
+     viewBox="0 0 120 120"
+     xmlns="http://www.w3.org/2000/svg">
+     
+  <defs>
+    <clipPath id="myClip">
+
+  <rect x="0" y="80"
+        width="36" height="20"
+        fill="#FF00FF"/>
+  <rect x="42" y="80"
+        width="21" height="20"
+        fill="#FF00FF"/>
+  <rect x="69" y="75"
+        width="20" height="20"
+        fill="#FF00FF"/>
+  <rect x="85" y="49"
+        width="20" height="21"
+        fill="#FF00FF"/>
+  <rect x="91" y="0"
+        width="20" height="43"
+        fill="#FF00FF"/>
+    </clipPath>
+  </defs>
+     
+  <!-- underscore -->
+  <line x1="10" y1="100" 
+        x2="110" y2="100"
+        stroke-width="2" 
+        stroke="#20b2ff"
+        stroke-linecap="round"/>
+
+  <!-- bezier curve -->
+  <path d="M15,90 C90,90 90,90 105,20" 
+        stroke-width="2" 
+        stroke="#20b2ff"
+        stroke-linecap="round"
+        fill="none"
+        clip-path="url(#myClip)"/>
+        
+  <!-- arrow tip -->
+  <line x1="105" y1="20" 
+        x2="100" y2="23"
+        stroke-width="2" 
+        stroke="#20b2ff"
+        stroke-linecap="round"/>
+  <line x1="105" y1="20" 
+        x2="108" y2="25"
+        stroke-width="2" 
+        stroke="#20b2ff"
+        stroke-linecap="round"/>
+        
+  <circle cx="39" cy="90" 
+          r="3"
+          fill="none"
+          stroke-width="2" 
+          stroke="#20b2ff"
+          stroke-linecap="round"/>
+          
+  <circle cx="66" cy="88" 
+          r="3"
+          fill="none"
+          stroke-width="2" 
+          stroke="#20b2ff"
+          stroke-linecap="round"/>
+          
+  <circle cx="90" cy="73" 
+          r="3"
+          fill="none"
+          stroke-width="2" 
+          stroke="#20b2ff"
+          stroke-linecap="round"/>
+          
+  <circle cx="99" cy="46" 
+          r="3"
+          fill="none"
+          stroke-width="2" 
+          stroke="#20b2ff"
+          stroke-linecap="round"/>
+          
+</svg>

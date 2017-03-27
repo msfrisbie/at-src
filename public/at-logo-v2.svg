@@ -1,0 +1,73 @@
+<svg width="80" height="80" 
+     viewBox="0 0 1200 1200"
+     xmlns="http://www.w3.org/2000/svg">
+ 
+  <!-- underscores -->
+  <line x1="20" y1="20" 
+        x2="20" y2="1180"
+        stroke-width="30" 
+        stroke="#FFFFFF"
+        stroke-linecap="round"/>
+  <line x1="20" y1="1180" 
+        x2="1180" y2="1180"
+        stroke-width="30" 
+        stroke="#FFFFFF"
+        stroke-linecap="round"/>
+        
+  <circle cx="220" cy="1000" 
+          r="50"
+          fill="none"
+          stroke-width="30" 
+          stroke="#FFFFFF"
+          stroke-linecap="round"/>
+          
+  <line x1="240" y1="965"
+        x2="400" y2="630"
+        stroke-width="30" 
+        stroke="#FFFFFF"/>
+        
+  <circle cx="420" cy="600" 
+          r="50"
+          fill="none"
+          stroke-width="30" 
+          stroke="#FFFFFF"
+          stroke-linecap="round"/>
+
+
+  <line x1="450" y1="620"
+        x2="585" y2="735"
+        stroke-width="30" 
+        stroke="#FFFFFF"/>
+          
+  <circle cx="620" cy="750" 
+          r="50"
+          fill="none"
+          stroke-width="30" 
+          stroke="#FFFFFF"
+          stroke-linecap="round"/>
+          
+  <line x1="660" y1="725"
+        x2="780" y2="630"
+        stroke-width="30" 
+        stroke="#FFFFFF"/>
+          
+  <circle cx="820" cy="600" 
+          r="50"
+          fill="none"
+          stroke-width="30" 
+          stroke="#FFFFFF"
+          stroke-linecap="round"/>
+          
+  <line x1="840" y1="570"
+        x2="1000" y2="240"
+        stroke-width="30" 
+        stroke="#FFFFFF"/>
+        
+  <circle cx="1020" cy="200" 
+          r="50"
+          fill="none"
+          stroke-width="30" 
+          stroke="#FFFFFF"
+          stroke-linecap="round"/>
+         
+</svg>

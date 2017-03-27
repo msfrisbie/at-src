@@ -9,6 +9,7 @@ module.exports = function(sequelize, DataTypes) {
   var Article = sequelize.define('Article', {
     title: DataTypes.STRING,
     url_snippet: DataTypes.STRING,
+    image_url: DataTypes.STRING,
     publish_date: DataTypes.DATE,
     body: DataTypes.TEXT
   }, {

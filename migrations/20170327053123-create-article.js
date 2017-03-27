@@ -14,6 +14,9 @@ module.exports = {
       url_snippet: {
         type: Sequelize.STRING
       },
+      image_url: {
+        type: Sequelize.STRING
+      },
       publish_date: {
         type: Sequelize.DATE
       },

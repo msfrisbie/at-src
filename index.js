@@ -14,6 +14,7 @@ const flash = require('connect-flash');
 const session = require('express-session');  
 const RedisStore = require('connect-redis')(session);
 
+const router = express.Router();
 
 app.set('port', (process.env.PORT || 5000));
 

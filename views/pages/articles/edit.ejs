@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AlwaysTrending - Edit Article</title>
+  <% include ../../partials/header.ejs %>
+</head>
+<body>
+<% include ../../partials/nav.ejs %>
+
+<form action="/articles<%= article.id ? `/${article.id}` : ''%>" method="post">
+  <% include partials/form.ejs %>
+
+  <button type="submit">Update</button>
+</form>
+
+<% include ../../partials/footer.ejs %>
+</body>
+</html>

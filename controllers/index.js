@@ -7,4 +7,6 @@ router.get('/', (request, response) => {
 
 router.use(require('./auth'));
 
+router.use('/articles', require('./article'));
+
 module.exports = router;

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AlwaysTrending - Article</title>
+  <% include ../../partials/header.ejs %>
+</head>
+<body>
+<% include ../../partials/nav.ejs %>
+
+<h1>Article Page</h1>
+
+<p>
+  <strong>id</strong>: <%= article.id %><br>      
+  <strong>title</strong>: <%= article.title %><br>
+  <strong>url_snippet</strong>: <%= article.url_snippet %><br>
+  <strong>image_url</strong>: <%= article.image_url %><br>
+  <strong>publish_date</strong>: <%= article.publish_date %><br>
+  <strong>body</strong>: <%= article.body %>
+</p>
+
+<% include ../../partials/footer.ejs %>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<div>
+    <label>Title</label>
+    <input type="text" 
+           name="article_title"
+           value="<%= article.title %>"
+           required>
+</div>
+<div>
+    <label>URL Snippet</label>
+    <input type="text" 
+           name="article_url_snippet"
+           value="<%= article.url_snippet %>"
+           required>
+</div>
+<div>
+    <label>Image URL</label>
+    <input type="text" 
+           name="article_image_url"
+           value="<%= article.image_url %>"
+           required>
+</div>
+<%= article.readablePublishDate() %>
+<div>
+    <label>Publish Date</label>
+    <input type="date" 
+           name="article_publish_date"
+           value="<%= article.htmlFormCompatiblePublishDate() %>"
+           required>
+</div>
+<div>
+    <label>Body</label>
+    <textarea name="article_body"
+              required><%= article.body %></textarea>
+</div>

@@ -28,7 +28,6 @@ module.exports = (sequelize, DataTypes) => {
         // associations can be defined here
         Article.belongsTo(models.User);
       },
-
       getOrmObjectFromRequestBody(body) {
         return {
           title:        body.article_title,

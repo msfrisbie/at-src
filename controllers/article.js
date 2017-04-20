@@ -42,7 +42,21 @@ router.get('/:articleId/edit', auth.isLoggedIn, (req, res) => {
 
 // Show single article
 router.get('/:articleId', (req, res) => {
-  models.Article.findById(req.params.articleId).then((article) => {
+  let articlePromise;
+
+  if (isNaN(parseInt(req.params.articleId))) {
+    // articleId is a url_snippet
+    articlePromise = models.Article.findOne({
+      where: {
+        'url_snippet': req.params.articleId
+      }
+    });
+  } else {
+    // articleId is an integer
+    articlePromise = models.Article.findById(req.params.articleId);
+  }
+
+  articlePromise.then((article) => {
     res.render('pages/articles/show_one', {
       article: article
     });  

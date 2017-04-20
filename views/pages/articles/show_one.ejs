@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>AlwaysTrending - Article</title>
+  <title><%= article.title %> - AlwaysTrending</title>
   <% include ../../partials/header.ejs %>
 </head>
 <body>
 <% include ../../partials/nav.ejs %>
 
-<h1>Article Page</h1>
 
-<p>
-  <strong>id</strong>: <%= article.id %><br>      
-  <strong>title</strong>: <%= article.title %><br>
-  <strong>url_snippet</strong>: <%= article.url_snippet %><br>
-  <strong>image_url</strong>: <%= article.image_url %><br>
-  <strong>publish_date</strong>: <%= article.publish_date %><br>
-  <strong>body</strong>: <%= article.body %>
-</p>
+<div id="content-panel"
+     style="background-image:url('https://static.pexels.com/photos/5199/hands-coffee-cup-apple.jpg');">
+
+  <div id="content">
+    <h2><%= article.readablePublishDate() %></h2>
+    <hr />
+    <h1><%= article.title %></h1>
+    <%- article.body %>
+  </div>
+</div>
 
 <% include ../../partials/footer.ejs %>
 </body>

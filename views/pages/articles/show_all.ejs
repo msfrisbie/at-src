@@ -1,1 +1,22 @@
-show all
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Articles - AlwaysTrending</title>
+  <% include ../../partials/header.ejs %>
+</head>
+<body>
+<% include ../../partials/nav.ejs %>
+
+  <div id="content">
+    <% for (let article of articles) { %>
+      <h1><%= article.title %></h1>
+      <p>
+        <a href="/articles/<%= article.id %>">View</a>
+        <a href="/articles/<%= article.id %>/edit">Edit</a>
+    <% } %>
+  </div>
+</div>
+
+<% include ../../partials/footer.ejs %>
+</body>
+</html>

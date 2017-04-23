@@ -9,8 +9,6 @@ const auth = require('../middleware/auth');
 
 // Show all articles
 router.get('/', (req, res) => {
-  console.log('jake');
-
   models.Article.findAll()
   .then((articles) => {
     res.render('pages/articles/show_all', {
@@ -28,6 +26,7 @@ router.get('/create', auth.isLoggedIn, (req, res) => {
   });
 });
 
+// Edit an existing article
 router.get('/:articleId/edit', auth.isLoggedIn, (req, res) => {
   models.Article.findById(req.params.articleId)
   .then((article) => {

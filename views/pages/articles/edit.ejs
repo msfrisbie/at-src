@@ -7,11 +7,14 @@
 <body>
 <% include ../../partials/nav.ejs %>
 
-<form action="/articles<%= article.id ? `/${article.id}` : ''%>" method="post">
-  <% include partials/form.ejs %>
+<div id="content">
+  <form action="/articles<%= article.id ? `/${article.id}` : ''%>" 
+        method="post">
+    <% include partials/form.ejs %>
 
-  <button type="submit">Update</button>
-</form>
+    <button type="submit">Update</button>
+  </form>
+</div>
 
 <% include ../../partials/footer.ejs %>
 </body>

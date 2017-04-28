@@ -30,7 +30,6 @@ router.get('/create', auth.isLoggedIn, (req, res) => {
 router.get('/:articleId/edit', auth.isLoggedIn, (req, res) => {
   models.Article.findById(req.params.articleId)
   .then((article) => {
-    console.log(JSON.stringify(article.publish_date))
     res.render('pages/articles/edit', {
       article: article
     });
@@ -64,7 +63,7 @@ router.get('/:articleId', (req, res) => {
   });
 });
 
-// Create
+// Create article
 router.post('/', auth.isLoggedIn, (req, res) => {
   models.Article.create(
     models.Article.getOrmObjectFromRequestBody(req.body))

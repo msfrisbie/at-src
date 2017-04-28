@@ -21,7 +21,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE,
       defaultValue: new Date
     },
-    body: DataTypes.TEXT
+    body: DataTypes.TEXT,
+    is_public: DataTypes.BOOLEAN
   }, {
     classMethods: {
       associate(models) {
@@ -34,7 +35,8 @@ module.exports = (sequelize, DataTypes) => {
           url_snippet:  body.article_url_snippet,
           image_url:    body.article_image_url,
           publish_date: body.article_publish_date,
-          body:         body.article_body
+          body:         body.article_body,
+          is_public:    body.article_is_public
         };
       },
       normalizeDigits(number, numDigits=2) {

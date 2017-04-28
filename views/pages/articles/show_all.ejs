@@ -9,9 +9,11 @@
 
   <div id="content">
     <% for (let article of articles) { %>
-      <h1><%= article.title %></h1>
+      <h2>
+        <a href="/articles/<%= article.id %>"><%= article.title %></a>
+         - <%= article.readablePublishDate() %>
+      </h2>
       <p>
-        <a href="/articles/<%= article.id %>">View</a>
         <a href="/articles/<%= article.id %>/edit">Edit</a>
     <% } %>
   </div>

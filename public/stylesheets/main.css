@@ -5,14 +5,11 @@ html {
 body {
   margin: 0;
   padding: 0;
-  /*background-color: #555c65;*/
   color: #333333;
   font-family: 'Lato', sans-serif;
 }
 
 #nav {
-  /*background-color: #555c65;*/
-  /*background-color: #999999;*/
   background-color: #20B2FF;
   color: #FFFFFF;
   font-family: 'Signika Negative', sans-serif;
@@ -24,14 +21,18 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 140px;
+  max-height: 140px;
   margin: 0;
   padding:0; 
 }
 
+.logo img {
+  width:auto;
+}
+
 #nav span {
   font-size: 82px;
-  margin: 0 14px;
+  margin: 0 0 0 14px;
 }
 
 .nav-buttons {
@@ -40,15 +41,20 @@ body {
 }
 
 .nav-buttons ul {
+  list-style-type: none;
   padding: 0;
   margin: 0;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
 }
 
 .nav-buttons li {
-  display: inline-block;
+  text-align: center;
+  display: list-item;
+  flex-grow: 1;
   font-size: 20px;
+  padding: 0 14px;
 }
 
 .nav-buttons a,
@@ -69,7 +75,7 @@ body {
 #content {
   background-color: #FFFFFF;
   max-width: 740px;
-  margin: 0 auto;
+  margin: 60px auto 50% auto;
   font-size: 16px;
   line-height: 1.75em;
   padding: 16px 40px;
@@ -79,11 +85,110 @@ body {
 }
 
 #content-panel {
-  /*position: absolute;*/
-  background:url(https://static.pexels.com/photos/5199/hands-coffee-cup-apple.jpg) no-repeat center center fixed;
-  padding: 40px 0 0 0;
   min-width: 100%;
-  background-size:cover;
+}
+
+@media (min-width:240px)  { 
+  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */ 
+  .logo {
+    padding: 14px;
+  }
+
+  .logo img {
+    width: 26px;
+  }
+
+  #nav span {
+    font-size: 26px;
+  }
+
+  .nav-buttons {
+    margin: 0 0 10px 0;
+  }
+
+  .nav-buttons li {}
+
+  #content {
+    margin-top: 15px;
+    max-width: 85%;
+  }
+
+  #content-panel {
+  }
+}
+@media (min-width:480px)  { 
+  /* smartphones, Android phones, landscape iPhone */ 
+  .logo {
+    padding: 14px;
+  }
+
+  .logo img {
+    width: 26px;
+  }
+
+  #nav span {
+    font-size: 26px;
+  }
+
+  .nav-buttons {
+    margin: 0 0 10px 0;
+  }
+
+  .nav-buttons li {}
+}
+@media (min-width:600px)  { 
+  /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */ 
+  .logo {
+    padding: 14px;
+  }
+
+  .logo img {
+    width: 40px;
+  }
+
+  #nav span {
+    font-size: 40px;
+  }
+
+  .nav-buttons {
+    margin: 0 0 10px 0;
+  }
+
+  .nav-buttons li {}
+
+  #content {
+    margin-top: 40px;
+  }
+}
+@media (min-width:801px)  { 
+  /* tablet, landscape iPad, lo-res laptops ands desktops */ 
+  .logo img {
+    width:auto;
+  }
+
+  #nav span {
+    font-size: 82px;
+    margin: 0 0 0 14px;
+  }
+
+  .nav-buttons {
+    margin: 0 0 20px 0;
+  }
+
+  #content {
+    margin-top: 60px;
+    max-width: 740px;
+  }
+
+  #content-panel {
+  }
+
+}
+@media (min-width:1025px) { 
+  /* big landscape tablets, laptops, and desktops */ 
+}
+@media (min-width:1281px) { 
+  /* hi-res laptops and desktops */ 
 }
 
 

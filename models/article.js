@@ -60,11 +60,15 @@ module.exports = (sequelize, DataTypes) => {
         return `${monthNames[month]} ${day}, ${date.getFullYear()}`;
       }
     }, instanceMethods: {
+      getTimezoneCorrectedPublishDate() {
+        return new Date(this.publish_date.getTime() + 
+          this.publish_date.getTimezoneOffset() * 60000);
+      },
       htmlFormCompatiblePublishDate() {
-        return Article.getHtmlFormCompatibleDate(this.publish_date);
+        return Article.getHtmlFormCompatibleDate(this.getTimezoneCorrectedPublishDate());
       },
       readablePublishDate() {
-        return Article.getFullReadableDate(this.publish_date);
+        return Article.getFullReadableDate(this.getTimezoneCorrectedPublishDate());
       }
     }
   });

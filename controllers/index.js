@@ -5,6 +5,9 @@ router.get('/', (request, response) => {
   response.render('pages/index');
 });
 
+// Import all main paths
+router.use(require('./main'));
+
 // Import all auth paths
 router.use(require('./auth'));
 

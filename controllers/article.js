@@ -12,7 +12,8 @@ router.get('/', (req, res) => {
   models.Article.findAll()
   .then((articles) => {
     res.render('pages/articles/show_all', {
-      articles: articles
+      articles: articles,
+      user: req.user
     });
   }, (err) => {
     res.status(404);
@@ -55,8 +56,10 @@ router.get('/:articleId', (req, res) => {
   }
 
   articlePromise.then((article) => {
+    console.log('pd from db', article.publish_date);
     res.render('pages/articles/show_one', {
-      article: article
+      article: article,
+      user: req.user
     });  
   }, (err) => {
     res.status(404);
@@ -84,7 +87,8 @@ router.post('/:articleId', auth.isLoggedIn, (req, res) => {
       models.Article.getOrmObjectFromRequestBody(req.body))
     .then(() => {
       res.render('pages/articles/show_one', {
-        article: article
+        article: article,
+        user: req.user
       });
     }, (err) => {
       res.status(500).send({ error: err });

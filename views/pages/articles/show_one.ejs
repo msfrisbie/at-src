@@ -3,6 +3,13 @@
 <head>
   <title><%= article.title %> - AlwaysTrending</title>
   <% include ../../partials/header.ejs %>
+  <style>
+    #content-panel {}
+    body {
+      background:url(<%= article.image_url %>) no-repeat top center fixed;
+      background-size:cover;
+    }
+  </style>
 </head>
 <body>
 <% include ../../partials/nav.ejs %>
@@ -11,9 +18,18 @@
 <div id="content-panel">
 
   <div id="content">
-    <h2><%= article.readablePublishDate() %></h2>
+    <h3><%= article.readablePublishDate() %></h3>
     <hr />
     <h1><%= article.title %></h1>
+    <% if (locals.user) { %>
+    <p class="<%= article.is_public ? "bg-success" : "bg-warning" %>">
+      <%= article.is_public ? "Published" : "Draft" %>
+    </p>
+    <p>
+      <a href="/articles/<%= article.id %>/edit">Edit</a>
+    </p>
+    <% } %>
+    <hr />
     <%- article.body %>
   </div>
 </div>

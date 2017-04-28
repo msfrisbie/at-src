@@ -9,12 +9,19 @@
 
   <div id="content">
     <% for (let article of articles) { %>
-      <h2>
+      <h3>
         <a href="/articles/<%= article.id %>"><%= article.title %></a>
          - <%= article.readablePublishDate() %>
-      </h2>
+      </h3>
+      <% if (locals.user) { %>
+      <p class="<%= article.is_public ? "bg-success" : "bg-warning" %>">
+        <%= article.is_public ? "Published" : "Draft" %>
+      </p>
       <p>
         <a href="/articles/<%= article.id %>/edit">Edit</a>
+      </p>
+      <% } %>
+    <hr>
     <% } %>
   </div>
 </div>

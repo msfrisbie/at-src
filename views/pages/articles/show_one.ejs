@@ -4,7 +4,7 @@
   <title><%= article.title %> - AlwaysTrending</title>
   <% include ../../partials/header.ejs %>
   <style>
-    body {
+    #cover {
       background:url(<%= article.image_url %>) no-repeat top center fixed;
       background-size:cover;
     }
@@ -15,29 +15,31 @@
   </style>
 </head>
 <body>
-<% include ../../partials/nav.ejs %>
+  <div id="cover"></div>
+
+  <% include ../../partials/nav.ejs %>
 
 
-<div id="content-panel">
+  <div id="content-panel">
 
-  <div id="content" class="shadowbox">
-    <% if (locals.user) { %>
-    <p class="<%= article.is_public ? "bg-success" : "bg-warning" %>">
-      <%= article.is_public ? "Published" : "Draft" %>
-    </p>
-    <p>
-      <a href="/articles/<%= article.id %>/edit">Edit</a>
-    </p>
-    <hr>
-    <% } %>
-    <h2><%= article.title %></h2>
-    <h4 style="color:inherit"><%= article.readablePublishDate() %></h4>
+    <div id="content" class="shadowbox">
+      <% if (locals.user) { %>
+      <p class="<%= article.is_public ? "bg-success" : "bg-warning" %>">
+        <%= article.is_public ? "Published" : "Draft" %>
+      </p>
+      <p>
+        <a href="/articles/<%= article.id %>/edit">Edit</a>
+      </p>
+      <hr>
+      <% } %>
+      <h2><%= article.title %></h2>
+      <h4 style="color:inherit"><%= article.readablePublishDate() %></h4>
 
-    <hr />
-    <%- article.body %>
+      <hr />
+      <%- article.body %>
+    </div>
   </div>
-</div>
 
-<% include ../../partials/footer.ejs %>
+  <% include ../../partials/footer.ejs %>
 </body>
 </html>

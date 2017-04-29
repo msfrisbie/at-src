@@ -9,6 +9,15 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
+#cover {
+  position:fixed;
+  height:100%;
+  width:100%;
+  top:0;
+  left:0;
+  z-index:-1;
+}
+
 #nav {
   background-color: #20B2FF;
   color: #FFFFFF;

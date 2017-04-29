@@ -4,10 +4,13 @@
   <title><%= article.title %> - AlwaysTrending</title>
   <% include ../../partials/header.ejs %>
   <style>
-    #content-panel {}
     body {
       background:url(<%= article.image_url %>) no-repeat top center fixed;
       background-size:cover;
+    }
+
+    #content h1,h2,h3,h4 {
+      color:#20B2FF;
     }
   </style>
 </head>
@@ -17,10 +20,7 @@
 
 <div id="content-panel">
 
-  <div id="content">
-    <h3><%= article.readablePublishDate() %></h3>
-    <hr />
-    <h1><%= article.title %></h1>
+  <div id="content" class="shadowbox">
     <% if (locals.user) { %>
     <p class="<%= article.is_public ? "bg-success" : "bg-warning" %>">
       <%= article.is_public ? "Published" : "Draft" %>
@@ -28,7 +28,11 @@
     <p>
       <a href="/articles/<%= article.id %>/edit">Edit</a>
     </p>
+    <hr>
     <% } %>
+    <h2><%= article.title %></h2>
+    <h4 style="color:inherit"><%= article.readablePublishDate() %></h4>
+
     <hr />
     <%- article.body %>
   </div>

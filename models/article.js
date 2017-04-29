@@ -15,7 +15,10 @@ module.exports = (sequelize, DataTypes) => {
 
   const Article = sequelize.define('Article', {
     title: DataTypes.STRING,
-    url_snippet: DataTypes.STRING,
+    url_snippet: {
+      type: DataTypes.STRING,
+      unique: true
+    },
     image_url: DataTypes.STRING,
     publish_date: {
       type: DataTypes.DATE,

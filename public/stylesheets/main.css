@@ -72,16 +72,72 @@ body {
   text-decoration: none;
 }
 
-#content {
+.shadowbox {
   background-color: #FFFFFF;
-  max-width: 740px;
-  margin: 60px auto 50% auto;
-  font-size: 16px;
-  line-height: 1.75em;
-  padding: 16px 40px;
   border: 1px solid #DDDDDD;
   border-radius: 8px;
   box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.3);
+  max-width: 740px;
+  font-size: 16px;
+  line-height: 1.75em;
+  padding: 16px 40px;
+}
+
+.article-preview {
+  border: none;
+  margin-bottom: 24px;
+  height:320px;
+  padding:0;
+}
+
+.article-preview a,
+.article-preview a:visited,
+.article-preview a:active,
+.article-preview a:link {
+  position:relative;
+  text-decoration: none;
+  display:inline-block;
+  width:100%;
+  height:100%;
+  cursor:pointer;
+}
+
+.article-preview a:hover {
+  text-decoration: none;
+  background-color:rgba(255,255,255,0.2);
+}
+
+.article-preview-overlay {
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  border-radius: 0 0 8px 8px;
+  background-color: rgba(0,0,0,0.2);
+  padding: 16px;
+  color: #FFFFFF;
+}
+
+.article-preview-text {
+  display:block;
+  line-height:1.2em;
+}
+
+.article-preview-title {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.article-preview-date {
+  font-size: 22px;
+}
+
+#content {
+  margin: 60px auto 50% auto;
+}
+
+.content {
+
 }
 
 #content-panel {
@@ -111,10 +167,16 @@ body {
   #content {
     margin-top: 15px;
     max-width: 85%;
+    font-size: 13px;
   }
 
   #content-panel {
   }
+
+  .shadowbox {
+    padding: 12px 20px;
+  }
+
 }
 @media (min-width:480px)  { 
   /* smartphones, Android phones, landscape iPhone */ 
@@ -158,6 +220,11 @@ body {
 
   #content {
     margin-top: 40px;
+    font-size: 16px;
+  }
+
+  .shadowbox {
+    padding: 18px 30px;
   }
 }
 @media (min-width:801px)  { 

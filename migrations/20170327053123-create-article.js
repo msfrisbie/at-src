@@ -12,7 +12,8 @@ module.exports = {
         type: Sequelize.STRING
       },
       url_snippet: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true
       },
       image_url: {
         type: Sequelize.STRING

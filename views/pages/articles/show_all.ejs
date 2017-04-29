@@ -7,12 +7,12 @@
 <body>
 <% include ../../partials/nav.ejs %>
 
-  <div id="content">
+  <div id="content" class="shadowbox">
     <% for (let article of articles) { %>
       <h3>
-        <a href="/articles/<%= article.id %>"><%= article.title %></a>
-         - <%= article.readablePublishDate() %>
+        <a href="/articles/<%= article.url_snippet %>"><%= article.title %></a>
       </h3>
+      <h4><%= article.readablePublishDate() %></h4>
       <% if (locals.user) { %>
       <p class="<%= article.is_public ? "bg-success" : "bg-warning" %>">
         <%= article.is_public ? "Published" : "Draft" %>
@@ -24,7 +24,6 @@
     <hr>
     <% } %>
   </div>
-</div>
 
 <% include ../../partials/footer.ejs %>
 </body>

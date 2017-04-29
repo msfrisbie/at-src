@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AlwaysTrending</title>
+  <% include ../partials/header.ejs %>
+  <style>
+    <% for (let article of articles) { %>
+      .article-<%= article.id %> {
+        background:url(<%= article.image_url %>) no-repeat top center;
+        background-size:cover;
+      }
+    <% } %>
+  </style>
+</head>
+<body>
+  <% include ../partials/nav.ejs %>
+
+  <div id="content">
+    <% for (let article of articles) { %>
+    <div class="shadowbox article-preview article-<%= article.id %>">
+      <a href="/articles/<%= article.url_snippet %>">
+        <div class="article-preview-overlay">
+          <span class="article-preview-text article-preview-title">
+            <%= article.title %>
+          </span>
+          <span class="article-preview-text article-preview-date">
+            <%= article.readablePublishDate() %>
+          </span>
+        </div>
+      </a>
+    </div>
+    <% } %>
+  </div>
+
+  <% include ../partials/footer.ejs %>
+</div>
+
+</body>
+</html>

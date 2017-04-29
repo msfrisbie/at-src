@@ -56,7 +56,6 @@ router.get('/:articleId', (req, res) => {
   }
 
   articlePromise.then((article) => {
-    console.log('pd from db', article.publish_date);
     res.render('pages/articles/show_one', {
       article: article,
       user: req.user

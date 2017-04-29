@@ -1,10 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', (request, response) => {
-  response.render('pages/index');
-});
-
 // Import all main paths
 router.use(require('./main'));
 

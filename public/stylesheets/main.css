@@ -83,7 +83,7 @@ body {
   padding: 16px 40px;
 }
 
-.article-preview {
+.shadowbox.article-preview {
   border: none;
   margin-bottom: 24px;
   height:320px;
@@ -124,7 +124,7 @@ body {
 }
 
 .article-preview-title {
-  font-size: 48px;
+  font-size: 40px;
   font-weight: bold;
 }
 

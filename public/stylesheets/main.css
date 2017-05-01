@@ -145,11 +145,11 @@ body {
   font-size: 18px;
 }
 
-.slim-article-preview.article-preview-title {
+.slim-article-preview .article-preview-title {
   font-size: 18px;
 }
 
-.slim-article-preview.article-preview-date {
+.slim-article-preview .article-preview-date {
   font-size: 14px;
 }
 

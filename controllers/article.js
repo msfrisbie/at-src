@@ -56,10 +56,24 @@ router.get('/:articleId', (req, res) => {
   }
 
   articlePromise.then((article) => {
-    res.render('pages/articles/show_one', {
-      article: article,
-      user: req.user
-    });  
+    models.Article.findAll({
+      where: {
+        'is_public': true,
+        'id': {
+          $ne: article.id
+        }
+      },
+      order: 'publish_date DESC'
+    })
+    .then((otherArticles) => {
+      res.render('pages/articles/show_one', {
+        article: article,
+        otherArticles: otherArticles,
+        user: req.user
+      });  
+    }, (err) => {
+      res.status(404);
+    });
   }, (err) => {
     res.status(404);
   });

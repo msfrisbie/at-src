@@ -99,6 +99,10 @@ body {
   padding:0;
 }
 
+.shadowbox.slim-article-preview {
+  height:180px;
+}
+
 .article-preview a,
 .article-preview a:visited,
 .article-preview a:active,
@@ -139,6 +143,14 @@ body {
 
 .article-preview-date {
   font-size: 18px;
+}
+
+.slim-article-preview.article-preview-title {
+  font-size: 18px;
+}
+
+.slim-article-preview.article-preview-date {
+  font-size: 14px;
 }
 
 #content {

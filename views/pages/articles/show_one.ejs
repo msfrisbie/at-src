@@ -12,6 +12,13 @@
     #content h1,h2,h3,h4 {
       color:#20B2FF;
     }
+
+    <% for (let article of otherArticles) { %>
+      .article-<%= article.id %> {
+        background:url(<%= article.image_url %>) no-repeat top center;
+        background-size:cover;
+      }
+    <% } %>
   </style>
 </head>
 <body>
@@ -19,27 +26,39 @@
 
   <% include ../../partials/nav.ejs %>
 
+  <div id="content" class="shadowbox">
+    <% if (locals.user) { %>
+    <p class="<%= article.is_public ? "bg-success" : "bg-warning" %>">
+      <%= article.is_public ? "Published" : "Draft" %>
+    </p>
+    <p>
+      <a href="/articles/<%= article.id %>/edit">Edit</a>
+    </p>
+    <hr>
+    <% } %>
+    <h2><%= article.title %></h2>
+    <h4 style="color:inherit"><%= article.readablePublishDate() %></h4>
 
-  <div id="content-panel">
+    <hr />
+    <%- article.body %>
+    <div class="addthis_inline_share_toolbox"></div>
 
-    <div id="content" class="shadowbox">
-      <% if (locals.user) { %>
-      <p class="<%= article.is_public ? "bg-success" : "bg-warning" %>">
-        <%= article.is_public ? "Published" : "Draft" %>
-      </p>
-      <p>
-        <a href="/articles/<%= article.id %>/edit">Edit</a>
-      </p>
-      <hr>
-      <% } %>
-      <h2><%= article.title %></h2>
-      <h4 style="color:inherit"><%= article.readablePublishDate() %></h4>
+    <hr>
+    <h2 style="margin-bottom:30px">You might also enjoy:</h2>
 
-      <hr />
-      <%- article.body %>
-      <div class="addthis_inline_share_toolbox"></div>
+    <% for (let article of otherArticles) { %>
+    <div class="shadowbox article-preview slim-article-preview article-<%= article.id %>">
+      <a href="<%= article.getUrl() %>">
+        <div class="article-preview-overlay">
+          <span class="article-preview-text article-preview-title">
+            <%= article.title %>
+          </span>
+        </div>
+      </a>
     </div>
+    <% } %>
   </div>
+
 
   <% include ../../partials/footer.ejs %>
 

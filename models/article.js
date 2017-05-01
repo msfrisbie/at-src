@@ -63,6 +63,9 @@ module.exports = (sequelize, DataTypes) => {
         return `${monthNames[month]} ${day}, ${date.getFullYear()}`;
       }
     }, instanceMethods: {
+      getUrl() {
+        return `/articles/${this.url_snippet}`;
+      },
       getTimezoneCorrectedPublishDate() {
         return new Date(this.publish_date.getTime() + 
           this.publish_date.getTimezoneOffset() * 60000);

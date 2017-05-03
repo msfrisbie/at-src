@@ -99,10 +99,11 @@ router.post('/:articleId', auth.isLoggedIn, (req, res) => {
     article.update(
       models.Article.getOrmObjectFromRequestBody(req.body))
     .then(() => {
-      res.render('pages/articles/show_one', {
-        article: article,
-        user: req.user
-      });
+      res.redirect(`/articles/${article.id}`);
+      // res.render('pages/articles/show_one', {
+      //   article: article,
+      //   user: req.user
+      // });
     }, (err) => {
       res.status(500).send({ error: err });
     });    

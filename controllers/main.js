@@ -63,7 +63,6 @@ router.get('/sitemap', (req, res) => {
 });
 
 router.get('/about', (req, res) => {
-  console.log(req.path);
   res.render('pages/about', {
     path: req.path
   });

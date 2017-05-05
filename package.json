@@ -6,7 +6,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "sequelize db:migrate && node index.js"
+    "start": "sequelize -c config/config.js db:migrate && node index.js"
   },
   "dependencies": {
     "bcrypt": "^1.0.2",

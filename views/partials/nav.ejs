@@ -5,15 +5,31 @@
   </div>
   <div class="nav-buttons">
     <ul>
+      <% for (let navEntry of [
+        {
+          'path': '/',
+          'text': 'ABOVE THE FOLD'
+        },
+        {
+          'path': '/news',
+          'text': 'NEWS'
+        },
+        {
+          'path': '/essays',
+          'text': 'ESSAYS'
+        },
+        {
+          'path': '/about',
+          'text': 'ABOUT'
+        }
+      ]) { %>
       <li>
-        <a href="/">ABOVE THE FOLD</a>
+        <a href="<%= navEntry.path%>"
+           <% if (navEntry.path === locals.path) { %>class="active"<% } %>>
+          <%= navEntry.text %>
+        </a>  
       </li>
-      <li>
-        <a href="/articles">ALL CONTENT</a>
-      </li>
-      <li>
-        <a href="/about">ABOUT</a>
-      </li>
+      <% } %>
     </ul>
   </div>
 </div>

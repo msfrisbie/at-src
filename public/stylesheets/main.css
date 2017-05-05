@@ -62,8 +62,9 @@ body {
   text-align: center;
   display: list-item;
   flex-grow: 1;
+  min-width:140px;
   font-size: 20px;
-  padding: 0 14px;
+  padding: 5px 14px;
 }
 
 .nav-buttons a,
@@ -161,6 +162,21 @@ body {
 
 }
 
+/*#content-heading {
+  color: white;
+  text-align:center;
+  opacity:0.5;
+  margin: 0 0 60px 0;
+}
+
+#content-heading h1 {
+  padding: 0.4em;
+  display:inline-block;
+  background-color: #20B2FF;  
+  border-radius: 8px;
+  box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.3);
+}*/
+
 #content-panel {
   min-width: 100%;
 }
@@ -183,7 +199,11 @@ body {
     margin: 0 0 10px 0;
   }
 
-  .nav-buttons li {}
+  .nav-buttons a.active {
+    padding: 0.2em 0.4em;
+    border: 1px solid white;
+    border-radius: 4px;
+  }
 
   #content {
     margin-top: 15px;

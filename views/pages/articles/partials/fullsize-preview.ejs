@@ -1,0 +1,11 @@
+<% for (let article of articles) { %>
+<div class="shadowbox article-preview article-<%= article.id %>">
+  <a href="<%= article.getUrl() %>">
+    <div class="article-preview-overlay">
+      <span class="article-preview-text article-preview-title">
+        <%= article.title %>
+      </span>
+    </div>
+  </a>
+</div>
+<% } %>

@@ -28,6 +28,11 @@ module.exports = (sequelize, DataTypes) => {
     is_public: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
+    },
+    content_type:       {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0
     }
   }, {
     classMethods: {
@@ -42,7 +47,8 @@ module.exports = (sequelize, DataTypes) => {
           image_url:    body.article_image_url,
           publish_date: body.article_publish_date,
           body:         body.article_body,
-          is_public:    body.article_is_public === 'on'
+          is_public:    body.article_is_public === 'on',
+          content_type: body.article_content_type
         };
       },
       normalizeDigits(number, numDigits=2) {

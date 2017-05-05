@@ -51,7 +51,7 @@ body {
 
 .nav-buttons ul {
   list-style-type: none;
-  padding: 0;
+  padding: 0 14px;
   margin: 0;
   display: flex;
   flex-wrap: wrap;
@@ -62,9 +62,9 @@ body {
   text-align: center;
   display: list-item;
   flex-grow: 1;
-  min-width:130px;
+  min-width:120px;
   font-size: 20px;
-  padding: 5px 14px;
+  padding: 5px 0;
 }
 
 .nav-buttons a,

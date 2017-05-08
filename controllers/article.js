@@ -56,11 +56,13 @@ router.get('/:articleId', (req, res) => {
   }
 
   articlePromise.then((article) => {
+    // If this is returning null, there is probably a bad image URL
+    // hitting the site.
     models.Article.findAll({
       where: {
         'is_public': true,
         'id': {
-          $ne: article.id
+          '$ne': article.id
         }
       },
       order: 'publish_date DESC'

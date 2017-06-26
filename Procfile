@@ -1,1 +1,1 @@
-web: sequelize -c config/config.js db:migrate && node index.js
+web: node index.js

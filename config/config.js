@@ -2,7 +2,7 @@
 https://github.com/sequelize/cli/issues/91
 https://github.com/sequelize/cli/issues/77#issuecomment-68299495
 
-sequlize migration:create
+sequelize migration:create
 
 sequelize db:migrate
 

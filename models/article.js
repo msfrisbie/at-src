@@ -29,7 +29,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       defaultValue: false
     },
-    content_type:       {
+    content_type: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0
+    },
+    popularity: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: 0
@@ -48,7 +53,8 @@ module.exports = (sequelize, DataTypes) => {
           publish_date: body.article_publish_date,
           body:         body.article_body,
           is_public:    body.article_is_public === 'on',
-          content_type: body.article_content_type
+          content_type: body.article_content_type,
+          popularity:   body.article_popularity
         };
       },
       normalizeDigits(number, numDigits=2) {
@@ -68,7 +74,8 @@ module.exports = (sequelize, DataTypes) => {
         const day = date.getDate();
         return `${monthNames[month]} ${day}, ${date.getFullYear()}`;
       }
-    }, instanceMethods: {
+    }, 
+    instanceMethods: {
       getUrl() {
         return `/articles/${this.url_snippet}`;
       },

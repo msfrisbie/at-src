@@ -13,7 +13,9 @@ router.get('/', (req, res) => {
     order: 'publish_date DESC'
   })
   .then((articles) => {
+    const featuredArticle = articles.shift();
     res.render('pages/abovethefold', {
+      featuredArticle: featuredArticle,
       articles: articles,
       path: req.path
     });

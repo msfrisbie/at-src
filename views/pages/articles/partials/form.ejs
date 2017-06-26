@@ -64,6 +64,15 @@
          required>
 </div>
 <div class="form-group">
+  <label>Article Popularity (0 is least popular)</label>
+  <input type="number" 
+         name="article_popularity"
+         value="<%= article.popularity %>"
+         class="form-control"
+         placeholder="0-10"
+         required>
+</div>
+<div class="form-group">
   <label>Body</label>
   <textarea name="article_body"
             class="form-control"

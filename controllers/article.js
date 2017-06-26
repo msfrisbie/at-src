@@ -65,7 +65,12 @@ router.get('/:articleId', (req, res) => {
           '$ne': article.id
         }
       },
-      order: 'publish_date DESC'
+      order: 'random(), popularity ASC',
+      // order: 'publish_date DESC',
+      // [
+      //   Sequelize.fn( 'RAND' ),
+      // ],
+      limit: 5
     })
     .then((otherArticles) => {
       res.render('pages/articles/show_one', {

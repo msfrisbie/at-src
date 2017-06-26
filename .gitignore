@@ -13,3 +13,6 @@ db_dumps/*
 Dockerfile
 docker-compose.yml
 .env
+
+# Credentials
+config/secret-config.js

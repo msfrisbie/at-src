@@ -1,10 +1,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <% if (locals.article) { %>
-<meta name="twitter:card" content="summary" />
+<meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@alwaysbtrending" />
 <meta name="twitter:title" content="<%= article.title %>" />
 <meta name="twitter:image" content="<%= locals.article.image_url %>" />
+<meta name="twitter:description" content="<%= locals.article.getTaglessBody() %>" />
 <meta property="og:image" content="<%= locals.article.image_url%>" />
 <% } %>
 <link href="https://fonts.googleapis.com/css?family=Lato|Signika+Negative" 

@@ -79,6 +79,9 @@ module.exports = (sequelize, DataTypes) => {
       getUrl() {
         return `/articles/${this.url_snippet}`;
       },
+      getTaglessBody() {
+        return this.body.replace(/<.?[a-zA-Z]+>/g,'');
+      },
       getTimezoneCorrectedPublishDate() {
         return new Date(this.publish_date.getTime() + 
           this.publish_date.getTimezoneOffset() * 60000);

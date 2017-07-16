@@ -80,6 +80,7 @@ module.exports = (sequelize, DataTypes) => {
         return `/articles/${this.url_snippet}`;
       },
       getTaglessBody() {
+        // This was breaking the create view, since body did not exist
         return this.body.replace(/<.?[a-zA-Z]+>/g,'');
       },
       getTimezoneCorrectedPublishDate() {

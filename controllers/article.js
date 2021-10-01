@@ -1,5 +1,5 @@
 const express = require('express');
-const sequelize = require('sequelize');
+const { Sequelize } = require('sequelize');
 const router = express.Router();
 const models = require('../models');
 const auth = require('../middleware/auth');
@@ -65,10 +65,10 @@ router.get('/:articleId', (req, res) => {
       where: {
         'is_public': true,
         'id': {
-          [sequelize.Op.not]: [article.id]
+          [Sequelize.Op.not]: [article.id]
         }
       },
-      order: sequelize.random(),
+      order: Sequelize.random(),
       // order: 'publish_date DESC',
       // [
       //   Sequelize.fn( 'RAND' ),

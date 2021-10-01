@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
     where: {
       'is_public': true
     },
-    // order: [['publish_date', 'DESC']]
+    order: [['publish_date', 'DESC']]
   })
     .then((articles) => {
       const featuredArticle = articles.shift();

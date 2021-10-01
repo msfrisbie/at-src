@@ -39,62 +39,71 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       defaultValue: 0
     }
-  }, {
-    classMethods: {
-      associate(models) {
-        // associations can be defined here
-        Article.belongsTo(models.User);
-      },
-      getOrmObjectFromRequestBody(body) {
-        return {
-          title:        body.article_title,
-          url_snippet:  body.article_url_snippet,
-          image_url:    body.article_image_url,
-          publish_date: body.article_publish_date,
-          body:         body.article_body,
-          is_public:    body.article_is_public === 'on',
-          content_type: body.article_content_type,
-          popularity:   body.article_popularity
-        };
-      },
-      normalizeDigits(number, numDigits=2) {
-        let numberString = `${number}`;
-        while (numberString.length < numDigits) {
-          numberString = `0${numberString}`;
-        }
-        return numberString;
-      },
-      getHtmlFormCompatibleDate(date) {
-        const month = Article.normalizeDigits(date.getMonth() + 1);
-        const day = Article.normalizeDigits(date.getDate());
-        return `${date.getFullYear()}-${month}-${day}`
-      },
-      getFullReadableDate(date) {
-        const month = date.getMonth();
-        const day = date.getDate();
-        return `${monthNames[month]} ${day}, ${date.getFullYear()}`;
-      }
-    }, 
-    instanceMethods: {
-      getUrl() {
-        return `/articles/${this.url_snippet}`;
-      },
-      getTaglessBody() {
-        // This was breaking the create view, since body did not exist
-        return this.body.replace(/<.?[a-zA-Z]+>/g,'');
-      },
-      getTimezoneCorrectedPublishDate() {
-        return new Date(this.publish_date.getTime() + 
-          this.publish_date.getTimezoneOffset() * 60000);
-      },
-      htmlFormCompatiblePublishDate() {
-        return Article.getHtmlFormCompatibleDate(this.getTimezoneCorrectedPublishDate());
-      },
-      readablePublishDate() {
-        return Article.getFullReadableDate(this.getTimezoneCorrectedPublishDate());
-      }
-    }
   });
+
+  // Class Methods
+
+  Article.associate = (models) => {
+    // associations can be defined here
+    Article.belongsTo(models.User);
+  };
+
+  Article.getOrmObjectFromRequestBody = (body) => {
+    return {
+      title: body.article_title,
+      url_snippet: body.article_url_snippet,
+      image_url: body.article_image_url,
+      publish_date: body.article_publish_date,
+      body: body.article_body,
+      is_public: body.article_is_public === 'on',
+      content_type: body.article_content_type,
+      popularity: body.article_popularity
+    };
+  };
+
+  Article.normalizeDigits = (number, numDigits = 2) => {
+    let numberString = `${number}`;
+    while (numberString.length < numDigits) {
+      numberString = `0${numberString}`;
+    }
+    return numberString;
+  };
+
+  Article.getHtmlFormCompatibleDate = (date) => {
+    const month = Article.normalizeDigits(date.getMonth() + 1);
+    const day = Article.normalizeDigits(date.getDate());
+    return `${date.getFullYear()}-${month}-${day}`
+  };
+
+  Article.getFullReadableDate = (date) => {
+    const month = date.getMonth();
+    const day = date.getDate();
+    return `${monthNames[month]} ${day}, ${date.getFullYear()}`;
+  };
+
+  // Instance Methods
+  
+  Article.prototype.getUrl = () => {
+    return `/articles/${this.url_snippet}`;
+  };
+
+  Article.prototype.getTaglessBody = () => {
+    // This was breaking the create view, since body did not exist
+    return this.body.replace(/<.?[a-zA-Z]+>/g, '');
+  };
+
+  Article.prototype.getTimezoneCorrectedPublishDate = () => {
+    return new Date(this.publish_date.getTime() +
+      this.publish_date.getTimezoneOffset() * 60000);
+  };
+
+  Article.prototype.htmlFormCompatiblePublishDate = () => {
+    return Article.getHtmlFormCompatibleDate(this.getTimezoneCorrectedPublishDate());
+  };
+
+  Article.prototype.readablePublishDate = () => {
+    return Article.getFullReadableDate(this.getTimezoneCorrectedPublishDate());
+  }
 
   return Article;
 };

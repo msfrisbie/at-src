@@ -11,8 +11,14 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 const flash = require('connect-flash');
-const session = require('express-session');  
-const RedisStore = require('connect-redis')(session);
+// const session = require('express-session');  
+// const RedisStore = require('connect-redis')(session);
+const redis = require('redis')
+const session = require('express-session')
+let RedisStore = require('connect-redis')(session)
+const redisClient = redis.createClient({
+  url: process.env.REDIS_URL
+})
 
 const setupPassport = require('./middleware/passport');
 
@@ -34,16 +40,20 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-app.use(session({  
+app.use(session({
+  // store: new RedisStore({
+  //   url: process.env.REDIS_URL
+  // }),
   store: new RedisStore({
-    url: process.env.REDIS_URL
+    client: redisClient,
+    logErrors: true
   }),
   secret: process.env.REDIS_SECRET,
   resave: false,
   saveUninitialized: false
 }));
-app.use(passport.initialize());  
-app.use(passport.session()) ;
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(flash());
 
 // app.use(require('./middleware/passport'));
@@ -59,8 +69,8 @@ app.use(require('./controllers'));
 models.sequelize
   .sync()
   .then(() => {
-    app.listen(app.get('port'), 
-    () => console.log('Node app is running on port', app.get('port')))
+    app.listen(app.get('port'),
+      () => console.log('Node app is running on port', app.get('port')))
   });
 
 

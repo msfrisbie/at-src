@@ -6,7 +6,7 @@ sequelize migration:create
 
 sequelize db:migrate
 
-sequelize -c my_config.js
+sequelize --config my_config.js
 */
 
 require('dotenv').config();

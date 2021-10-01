@@ -2,29 +2,30 @@
   "name": "AlwaysTrending",
   "version": "0.0.1",
   "engines": {
-    "node": "8.1.2"
+    "node": "14.3.0"
   },
   "main": "index.js",
   "scripts": {
-    "start": "sequelize -c config/config.js db:migrate && node index.js"
+    "start": "sequelize --config config/config.js db:migrate && node index.js"
   },
   "dependencies": {
-    "bcrypt": "^1.0.2",
-    "body-parser": "^1.17.1",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
-    "connect-redis": "^3.2.0",
+    "connect-redis": "^6.0.0",
     "cookie-parser": "^1.4.3",
-    "dotenv": "^4.0.0",
-    "ejs": "2.4.1",
-    "express": "4.13.3",
-    "express-session": "^1.15.1",
-    "passport": "^0.3.2",
+    "dotenv": "^10.0.0",
+    "ejs": "3.1.6",
+    "express": "4.17.1",
+    "express-session": "^1.17.2",
+    "passport": "^0.5.0",
     "passport-local": "^1.0.0",
-    "pg": "^6.1.4",
-    "pg-hstore": "^2.3.2",
+    "pg": "^8.7.1",
+    "pg-hstore": "^2.3.4",
+    "redis": "^3.1.2",
     "req-flash": "0.0.3",
-    "sequelize": "^3.30.2",
-    "sequelize-cli": "^2.5.1"
+    "sequelize": "^6.6.5",
+    "sequelize-cli": "^6.2.0"
   },
   "repository": {
     "type": "git",

@@ -6,20 +6,16 @@ const constants = require('../util/constants');
 
 // Above the Fold
 router.get('/', (req, res) => {
-  // models.Article.findOne().then(() => {
-  //   res.send('Hello World!')
-  // })
-
   models.Article.findAll({
     where: {
       'is_public': true
     },
-    // order: 'publish_date DESC'
+    // order: [['publish_date', 'DESC']]
   })
     .then((articles) => {
       const featuredArticle = articles.shift();
 
-      console.log(featuredArticle.getUrl);
+      console.log(featuredArticle.getUrl());
 
       res.render('pages/abovethefold', {
         featuredArticle: featuredArticle,
@@ -28,10 +24,7 @@ router.get('/', (req, res) => {
       });
     }, (err) => {
       res.status(500);
-    })
-  // .finally(() => {
-  //   models.sequelize.close();
-  // });;
+    });
 });
 
 router.get('/news', (req, res) => {
@@ -40,7 +33,7 @@ router.get('/news', (req, res) => {
       'is_public': true,
       'content_type': constants.articleContentTypes.NEWS
     },
-    order: 'publish_date DESC'
+    order: [['publish_date', 'DESC']]
   })
     .then((articles) => {
       res.render('pages/news', {
@@ -58,7 +51,7 @@ router.get('/essays', (req, res) => {
       'is_public': true,
       'content_type': constants.articleContentTypes.ESSAY
     },
-    order: 'publish_date DESC'
+    order: [['publish_date', 'DESC']]
   })
     .then((articles) => {
       res.render('pages/essays', {

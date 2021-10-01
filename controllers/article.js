@@ -10,14 +10,14 @@ const auth = require('../middleware/auth');
 // Show all articles
 router.get('/', (req, res) => {
   models.Article.findAll()
-  .then((articles) => {
-    res.render('pages/articles/show_all', {
-      articles: articles,
-      user: req.user
+    .then((articles) => {
+      res.render('pages/articles/show_all', {
+        articles: articles,
+        user: req.user
+      });
+    }, (err) => {
+      res.status(404);
     });
-  }, (err) => {
-    res.status(404);
-  });
 });
 
 // Show page for creating a new article
@@ -30,13 +30,13 @@ router.get('/create', auth.isLoggedIn, (req, res) => {
 // Edit an existing article
 router.get('/:articleId/edit', auth.isLoggedIn, (req, res) => {
   models.Article.findById(req.params.articleId)
-  .then((article) => {
-    res.render('pages/articles/edit', {
-      article: article
+    .then((article) => {
+      res.render('pages/articles/edit', {
+        article: article
+      });
+    }, (err) => {
+      res.status(404);
     });
-  }, (err) => {
-    res.status(404);
-  });
 });
 
 // Show single article
@@ -65,22 +65,22 @@ router.get('/:articleId', (req, res) => {
           '$ne': article.id
         }
       },
-      order: 'random(), popularity ASC',
+      order: [['random()'], ['popularity', 'ASC']],
       // order: 'publish_date DESC',
       // [
       //   Sequelize.fn( 'RAND' ),
       // ],
       limit: 5
     })
-    .then((otherArticles) => {
-      res.render('pages/articles/show_one', {
-        article: article,
-        otherArticles: otherArticles,
-        user: req.user
-      });  
-    }, (err) => {
-      res.status(404);
-    });
+      .then((otherArticles) => {
+        res.render('pages/articles/show_one', {
+          article: article,
+          otherArticles: otherArticles,
+          user: req.user
+        });
+      }, (err) => {
+        res.status(404);
+      });
   }, (err) => {
     res.status(404);
   });
@@ -90,11 +90,11 @@ router.get('/:articleId', (req, res) => {
 router.post('/', auth.isLoggedIn, (req, res) => {
   models.Article.create(
     models.Article.getOrmObjectFromRequestBody(req.body))
-  .then((newArticle) => {
-    res.redirect(`/articles/${newArticle.id}`);
-  }, (err) => {
-    res.status(500).send({ error: err });
-  });
+    .then((newArticle) => {
+      res.redirect(`/articles/${newArticle.id}`);
+    }, (err) => {
+      res.status(500).send({ error: err });
+    });
 });
 
 // res.json({ products: [] });
@@ -105,15 +105,15 @@ router.post('/:articleId', auth.isLoggedIn, (req, res) => {
     // modify
     article.update(
       models.Article.getOrmObjectFromRequestBody(req.body))
-    .then(() => {
-      res.redirect(`/articles/${article.id}`);
-      // res.render('pages/articles/show_one', {
-      //   article: article,
-      //   user: req.user
-      // });
-    }, (err) => {
-      res.status(500).send({ error: err });
-    });    
+      .then(() => {
+        res.redirect(`/articles/${article.id}`);
+        // res.render('pages/articles/show_one', {
+        //   article: article,
+        //   user: req.user
+        // });
+      }, (err) => {
+        res.status(500).send({ error: err });
+      });
   }, (err) => {
     res.status(500).send({ error: err });
   });

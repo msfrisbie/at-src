@@ -6,9 +6,6 @@ const constants = require('../util/constants');
 
 // Above the Fold
 router.get('/', (req, res) => {
-  console.log('main');
-  console.log(models.Article);
-
   // models.Article.findOne().then(() => {
   //   res.send('Hello World!')
   // })
@@ -20,7 +17,7 @@ router.get('/', (req, res) => {
     // order: 'publish_date DESC'
   })
     .then((articles) => {
-      console.log('result');
+      console.log(articles);
 
       const featuredArticle = articles.shift();
       res.render('pages/abovethefold', {

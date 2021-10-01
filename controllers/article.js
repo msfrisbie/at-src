@@ -29,7 +29,7 @@ router.get('/create', auth.isLoggedIn, (req, res) => {
 
 // Edit an existing article
 router.get('/:articleId/edit', auth.isLoggedIn, (req, res) => {
-  models.Article.findById(req.params.articleId)
+  models.Article.findByPk(req.params.articleId)
     .then((article) => {
       res.render('pages/articles/edit', {
         article: article
@@ -52,7 +52,7 @@ router.get('/:articleId', (req, res) => {
     });
   } else {
     // articleId is an integer
-    articlePromise = models.Article.findById(req.params.articleId);
+    articlePromise = models.Article.findByPk(req.params.articleId);
   }
 
   articlePromise.then((article) => {
@@ -101,7 +101,7 @@ router.post('/', auth.isLoggedIn, (req, res) => {
 
 // Modify existing article
 router.post('/:articleId', auth.isLoggedIn, (req, res) => {
-  models.Article.findById(req.params.articleId).then((article) => {
+  models.Article.findByPk(req.params.articleId).then((article) => {
     // modify
     article.update(
       models.Article.getOrmObjectFromRequestBody(req.body))

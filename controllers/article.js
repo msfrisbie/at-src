@@ -65,10 +65,10 @@ router.get('/:articleId', (req, res) => {
       where: {
         'is_public': true,
         'id': {
-          [Sequelize.Op.not]: [article.id]
+          [models.sequelize.Op.not]: [article.id]
         }
       },
-      order: Sequelize.random(),
+      order: models.sequelize.random(),
       // order: 'publish_date DESC',
       // [
       //   Sequelize.fn( 'RAND' ),

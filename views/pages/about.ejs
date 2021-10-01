@@ -1,42 +1,53 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>AlwaysTrending - About</title>
-  <% include ../partials/header.ejs %>
+  <%- include('../partials/header.ejs') %>
 
-  <style>
-    #cover {
-      background:url(https://s3-us-west-1.amazonaws.com/alwaystrending/images/hands-coffee-cup-apple_1920x1080.jpg) no-repeat top center fixed;
-      background-size:cover;
-    }
-  </style>
+    <style>
+      #cover {
+        background: url(https://s3-us-west-1.amazonaws.com/alwaystrending/images/hands-coffee-cup-apple_1920x1080.jpg) no-repeat top center fixed;
+        background-size: cover;
+      }
+    </style>
 </head>
+
 <body>
   <div id="cover"></div>
-  <% include ../partials/nav.ejs %>
+  <%- include('../partials/nav.ejs') %>
 
-  <div id="content" class="shadowbox">
-    <h3>What is <i>AlwaysTrending</i>?</h3>
-    <p>
-      <i>AlwaysTrending</i> is your one-stop shop for essays, articles, and other content about the industry powered by slapping keyboards.
-    </p>
-    <h3>Who is <i>AlwaysTrending</i>'s audience?</h3>
-    <p>
-      If you've ever screamed at a compiler for disobedience; if you've ever cut your teeth at a startup in exchange for gobs of worthless equity; if you thought Google Glass was pretentious, yet scour ProductHunt daily for ways to avoid doing laundry; if you've ever closed Hacker News, glanced at a swamp of terminal error messages, then reopened Hacker News in a new tab - <i>AlwaysTrending</i> is for you.
-    </p>
-    <h3>About the Editor-in-Chief</h3>
-    <img style="display:block; width:100%; margin-bottom:10px;" src="https://s3-us-west-1.amazonaws.com/alwaystrending/images/jmt.jpg">
-    <p>
-      <b>Matt Frisbie</b> is a software engineer at Google and the author of several books. He spends his time neglecting code documentation, dodging recruiter spam, and devising elaborate ways of solving the world's problems using only JavaScript. There's this weird site about him <a href="http://mattfriz.com">here</a>.
-    </p>
-    <h3>Become a Contributor to <i>AlwaysTrending</i></h3>
-    <p>
-      If you'd like to contribute to the site, let us know you're interested.
-      <span style="font-weight:bold;cursor:pointer;" 
-            onclick="const email='moc.liamg@eibsirfsm'.split('').reverse().join('');this.innerHTML='<a href=\'mailto:'+email+'\' >'+email+'</a>'">Click here to reach out</span>
-    </p>
-  </div>
+    <div id="content" class="shadowbox">
+      <h3>What is <i>AlwaysTrending</i>?</h3>
+      <p>
+        <i>AlwaysTrending</i> is your one-stop shop for essays, articles, and other content about the industry powered
+        by slapping keyboards.
+      </p>
+      <h3>Who is <i>AlwaysTrending</i>'s audience?</h3>
+      <p>
+        If you've ever screamed at a compiler for disobedience; if you've ever cut your teeth at a startup in exchange
+        for gobs of worthless equity; if you thought Google Glass was pretentious, yet scour ProductHunt daily for ways
+        to avoid doing laundry; if you've ever closed Hacker News, glanced at a swamp of terminal error messages, then
+        reopened Hacker News in a new tab - <i>AlwaysTrending</i> is for you.
+      </p>
+      <h3>About the Editor-in-Chief</h3>
+      <img style="display:block; width:100%; margin-bottom:10px;"
+        src="https://s3-us-west-1.amazonaws.com/alwaystrending/images/jmt.jpg">
+      <p>
+        <b>Matt Frisbie</b> is a software engineer at Google and the author of several books. He spends his time
+        neglecting code documentation, dodging recruiter spam, and devising elaborate ways of solving the world's
+        problems using only JavaScript. There's this weird site about him <a href="http://mattfriz.com">here</a>.
+      </p>
+      <h3>Become a Contributor to <i>AlwaysTrending</i></h3>
+      <p>
+        If you'd like to contribute to the site, let us know you're interested.
+        <span style="font-weight:bold;cursor:pointer;"
+          onclick="const email='moc.liamg@eibsirfsm'.split('').reverse().join('');this.innerHTML='<a href=\'mailto:'+email+'\' >'+email+'</a>'">Click
+          here to reach out</span>
+      </p>
+    </div>
 
-  <% include ../partials/footer.ejs %>
+    <%- include('../partials/footer.ejs') %>
 </body>
+
 </html>

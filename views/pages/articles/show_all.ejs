@@ -1,30 +1,37 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Articles - AlwaysTrending</title>
-  <% include ../../partials/header.ejs %>
+  <%- include('../../partials/header.ejs') %>
 </head>
+
 <body>
-<% include ../../partials/nav.ejs %>
+  <%- include('../../partials/nav.ejs') %>
 
-  <div id="content" class="shadowbox">
-    <% for (let article of articles) { %>
-      <h3>
-        <a href="/articles/<%= article.url_snippet %>"><%= article.title %></a>
-      </h3>
-      <h4><%= article.readablePublishDate() %></h4>
-      <% if (locals.user) { %>
-      <p class="<%= article.is_public ? "bg-success" : "bg-warning" %>">
-        <%= article.is_public ? "Published" : "Draft" %>
-      </p>
-      <p>
-        <a href="/articles/<%= article.id %>/edit">Edit</a>
-      </p>
-      <% } %>
-    <hr>
-    <% } %>
-  </div>
+    <div id="content" class="shadowbox">
+      <% for (let article of articles) { %>
+        <h3>
+          <a href="/articles/<%= article.url_snippet %>">
+            <%= article.title %>
+          </a>
+        </h3>
+        <h4>
+          <%= article.readablePublishDate() %>
+        </h4>
+        <% if (locals.user) { %>
+          <p class="<%= article.is_public ? " bg-success" : "bg-warning" %>">
+            <%= article.is_public ? "Published" : "Draft" %>
+          </p>
+          <p>
+            <a href="/articles/<%= article.id %>/edit">Edit</a>
+          </p>
+          <% } %>
+            <hr>
+            <% } %>
+    </div>
 
-<% include ../../partials/footer.ejs %>
+    <%- include('../../partials/footer.ejs') %>
 </body>
+
 </html>

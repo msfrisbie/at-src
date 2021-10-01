@@ -1,33 +1,40 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>AlwaysTrending</title>
-  <% include ../partials/header.ejs %>
-  <style>
-    .featured-article {
-      background:url(<%= featuredArticle.image_url %>) no-repeat top center;
-      background-size:cover;
-    }
+  <%- include('../partials/header.ejs') %>
+    <style>
+      .featured-article {
+        background: url(<%= featuredArticle.image_url %>) no-repeat top center;
+        background-size: cover;
+      }
 
-    <% for (let article of articles) { %>
-    .article-<%= article.id %> {
-      background:url(<%= article.image_url %>) no-repeat top center;
-      background-size:cover;
-    }
-    <% } %>
-  </style>
+      <% for (let article of articles) {
+        %>.article-<%=article.id %> {
+          background: url(<%= article.image_url %>) no-repeat top center;
+          background-size: cover;
+        }
+
+        <%
+      }
+
+      %>
+    </style>
 </head>
+
 <body>
-  <% include ../partials/nav.ejs %>
+  <%- include('../partials/nav.ejs') %>
 
-  <% include ./articles/partials/feature-preview.ejs %>
+    <%- include('./articles/partials/feature-preview.ejs') %>
 
-  <div id="content" style="margin-bottom: 60px;">
-    <% include ./articles/partials/fullsize-preview.ejs %>
-  </div>
+      <div id="content" style="margin-bottom: 60px;">
+        <%- include('./articles/partials/fullsize-preview.ejs') %>
+      </div>
 
-  <% include ../partials/footer.ejs %>
-</div>
+      <%- include('../partials/footer.ejs') %>
+        </div>
 
 </body>
+
 </html>

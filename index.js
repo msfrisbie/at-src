@@ -59,9 +59,12 @@ app.use(flash());
 // app.use(require('./middleware/passport'));
 setupPassport();
 
+console.log('test');
 app.use(require('./controllers'));
 
-
+app.get('*', function (req, res) {
+  res.status(404).send('Not found');
+});
 
 
 

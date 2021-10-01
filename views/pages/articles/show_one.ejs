@@ -1,68 +1,84 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title><%= article.title %> - AlwaysTrending</title>
-  <% include ../../partials/header.ejs %>
-  <style>
-    #cover {
-      background:url(<%= article.image_url %>) no-repeat top center fixed;
-      background-size:cover;
-    }
-
-    #content h1,h2,h3,h4 {
-      color:#20B2FF;
-    }
-
-    <% for (let article of otherArticles) { %>
-      .article-<%= article.id %> {
-        background:url(<%= article.image_url %>) no-repeat top center;
-        background-size:cover;
+  <title>
+    <%= article.title %> - AlwaysTrending
+  </title>
+  <%- include('../../partials/header.ejs') %>
+    <style>
+      #cover {
+        background: url(<%= article.image_url %>) no-repeat top center fixed;
+        background-size: cover;
       }
-    <% } %>
-  </style>
+
+      #content h1,
+      h2,
+      h3,
+      h4 {
+        color: #20B2FF;
+      }
+
+      <% for (let article of otherArticles) {
+        %>.article-<%=article.id %> {
+          background: url(<%= article.image_url %>) no-repeat top center;
+          background-size: cover;
+        }
+
+        <%
+      }
+
+      %>
+    </style>
 </head>
+
 <body>
   <div id="cover"></div>
 
-  <% include ../../partials/nav.ejs %>
+  <%- include('../../partials/nav.ejs') %>
 
-  <div id="content" class="shadowbox">
-    <% if (locals.user) { %>
-    <p class="<%= article.is_public ? "bg-success" : "bg-warning" %>">
-      <%= article.is_public ? "Published" : "Draft" %>
-    </p>
-    <p>
-      <a href="/articles/<%= article.id %>/edit">Edit</a>
-    </p>
-    <hr>
-    <% } %>
-    <h2><%= article.title %></h2>
-    <h4 style="color:inherit"><%= article.readablePublishDate() %></h4>
-
-    <hr />
-    <%- article.body %>
-    <div class="addthis_inline_share_toolbox"></div>
-
-    <hr>
-    <h2 style="margin-bottom:30px">You might also enjoy:</h2>
-
-    <% for (let article of otherArticles) { %>
-    <div class="shadowbox article-preview slim-article-preview article-<%= article.id %>">
-      <a href="<%= article.getUrl() %>">
-        <div class="article-preview-overlay">
-          <span class="article-preview-text article-preview-title">
+    <div id="content" class="shadowbox">
+      <% if (locals.user) { %>
+        <p class="<%= article.is_public ? " bg-success" : "bg-warning" %>">
+          <%= article.is_public ? "Published" : "Draft" %>
+        </p>
+        <p>
+          <a href="/articles/<%= article.id %>/edit">Edit</a>
+        </p>
+        <hr>
+        <% } %>
+          <h2>
             <%= article.title %>
-          </span>
-        </div>
-      </a>
+          </h2>
+          <h4 style="color:inherit">
+            <%= article.readablePublishDate() %>
+          </h4>
+
+          <hr />
+          <%- article.body %>
+            <div class="addthis_inline_share_toolbox"></div>
+
+            <hr>
+            <h2 style="margin-bottom:30px">You might also enjoy:</h2>
+
+            <% for (let article of otherArticles) { %>
+              <div class="shadowbox article-preview slim-article-preview article-<%= article.id %>">
+                <a href="<%= article.getUrl() %>">
+                  <div class="article-preview-overlay">
+                    <span class="article-preview-text article-preview-title">
+                      <%= article.title %>
+                    </span>
+                  </div>
+                </a>
+              </div>
+              <% } %>
     </div>
-    <% } %>
-  </div>
 
 
-  <% include ../../partials/footer.ejs %>
+    <%- include('../../partials/footer.ejs') %>
 
-  <!-- Go to www.addthis.com/dashboard to customize your tools --> 
-  <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-590447151a6a8692"></script>
+      <!-- Go to www.addthis.com/dashboard to customize your tools -->
+      <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-590447151a6a8692"></script>
 </body>
+
 </html>

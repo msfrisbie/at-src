@@ -1,29 +1,36 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>AlwaysTrending - Essays</title>
-  <% include ../partials/header.ejs %>
-  <style>
-    <% for (let article of articles) { %>
-      .article-<%= article.id %> {
-        background:url(<%= article.image_url %>) no-repeat top center;
-        background-size:cover;
-      }
-    <% } %>
-  </style>
-</head>
-<body>
-  <% include ../partials/nav.ejs %>
+  <%- include('../partials/header.ejs') %>
+    <style>
+      <% for (let article of articles) {
+        %>.article-<%=article.id %> {
+          background: url(<%= article.image_url %>) no-repeat top center;
+          background-size: cover;
+        }
 
-  <div id="content" style="margin-bottom: 60px;">
-    <!-- <div id="content-heading">
+        <%
+      }
+
+      %>
+    </style>
+</head>
+
+<body>
+  <%- include('../partials/nav.ejs') %>
+
+    <div id="content" style="margin-bottom: 60px;">
+      <!-- <div id="content-heading">
       <h1>Essays</h1>
     </div> -->
-    <% include ./articles/partials/fullsize-preview.ejs %>
-  </div>
+      <%- include('./articles/partials/fullsize-preview.ejs') %>
+    </div>
 
-  <% include ../partials/footer.ejs %>
-</div>
+    <%- include('../partials/footer.ejs') %>
+      </div>
 
 </body>
+
 </html>

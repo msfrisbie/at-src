@@ -24,6 +24,9 @@ module.exports = {
       body: {
         type: Sequelize.TEXT
       },
+      is_public: {
+        type: Sequelize.BOOLEAN
+      },
       user_id: {
         type: Sequelize.INTEGER,
         references: {

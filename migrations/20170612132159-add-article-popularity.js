@@ -18,7 +18,6 @@ module.exports = {
         defaultValue: 0
       }
     )
-
   },
 
   down: function (queryInterface, Sequelize) {

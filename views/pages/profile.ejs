@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>AlwaysTrending - Profile</title>
-  <% include ../partials/header.ejs %>
+  <%- include('../partials/header.ejs') %>
 </head>
+
 <body>
-<% include ../partials/nav.ejs %>
+  <%- include('../partials/nav.ejs') %>
 
 
-<div id="content" class="shadowbox">
-    <h1>Profile Page</h1>
-    <p>
+    <div id="content" class="shadowbox">
+      <h1>Profile Page</h1>
+      <p>
         <strong>id</strong>: <%= user.id %><br>
-        <strong>email</strong>: <%= user.email %><br>
-        <strong>password</strong>: <%= user.password %>
-    </p>
-</div>
+          <strong>email</strong>: <%= user.email %><br>
+            <strong>password</strong>: <%= user.password %>
+      </p>
+    </div>
 
-<% include ../partials/footer.ejs %>
+    <%- include('../partials/footer.ejs') %>
 </body>
+
 </html>

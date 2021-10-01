@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>AlwaysTrending - Create Article</title>
-  <% include ../../partials/static.ejs %>
+  <%- include('../../partials/static.ejs') %>
 </head>
+
 <body>
-<% include ../../partials/nav.ejs %>
+  <%- include('../../partials/nav.ejs') %>
 
-<div id="content">
-  <form action="/articles" 
-        method="post">
-    <% include partials/form.ejs %>
+    <div id="content">
+      <form action="/articles" method="post">
+        <% include partials/form.ejs') %>
 
-    <button type="submit">Create</button>
-  </form>
-</div>
+          <button type="submit">Create</button>
+      </form>
+    </div>
 
-<% include ../../partials/footer.ejs %>
+    <%- include('../../partials/footer.ejs') %>
 </body>
+
 </html>

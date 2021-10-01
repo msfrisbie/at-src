@@ -6,22 +6,34 @@ const constants = require('../util/constants');
 
 // Above the Fold
 router.get('/', (req, res) => {
+  console.log('main');
+  console.log(models.Article);
+
+  // models.Article.findOne().then(() => {
+  //   res.send('Hello World!')
+  // })
+
   models.Article.findAll({
     where: {
       'is_public': true
     },
-    order: 'publish_date DESC'
+    // order: 'publish_date DESC'
   })
-  .then((articles) => {
-    const featuredArticle = articles.shift();
-    res.render('pages/abovethefold', {
-      featuredArticle: featuredArticle,
-      articles: articles,
-      path: req.path
-    });
-  }, (err) => {
-    res.status(500);
-  });
+    .then((articles) => {
+      console.log('result');
+
+      const featuredArticle = articles.shift();
+      res.render('pages/abovethefold', {
+        featuredArticle: featuredArticle,
+        articles: articles,
+        path: req.path
+      });
+    }, (err) => {
+      res.status(500);
+    })
+    .finally(() => {
+      models.sequelize.close();
+    });;
 });
 
 router.get('/news', (req, res) => {
@@ -32,14 +44,14 @@ router.get('/news', (req, res) => {
     },
     order: 'publish_date DESC'
   })
-  .then((articles) => {
-    res.render('pages/news', {
-      articles: articles,
-      path: req.path
+    .then((articles) => {
+      res.render('pages/news', {
+        articles: articles,
+        path: req.path
+      });
+    }, (err) => {
+      res.status(500);
     });
-  }, (err) => {
-    res.status(500);
-  });
 });
 
 router.get('/essays', (req, res) => {
@@ -50,14 +62,14 @@ router.get('/essays', (req, res) => {
     },
     order: 'publish_date DESC'
   })
-  .then((articles) => {
-    res.render('pages/essays', {
-      articles: articles,
-      path: req.path
+    .then((articles) => {
+      res.render('pages/essays', {
+        articles: articles,
+        path: req.path
+      });
+    }, (err) => {
+      res.status(500);
     });
-  }, (err) => {
-    res.status(500);
-  });
 });
 
 router.get('/sitemap', (req, res) => {

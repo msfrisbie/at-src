@@ -43,12 +43,12 @@ module.exports = (sequelize, DataTypes) => {
 
   // Class Methods
 
-  Article.associate = (models) => {
+  Article.associate = function (models) {
     // associations can be defined here
     Article.belongsTo(models.User);
   };
 
-  Article.getOrmObjectFromRequestBody = (body) => {
+  Article.getOrmObjectFromRequestBody = function (body) {
     return {
       title: body.article_title,
       url_snippet: body.article_url_snippet,
@@ -61,7 +61,7 @@ module.exports = (sequelize, DataTypes) => {
     };
   };
 
-  Article.normalizeDigits = (number, numDigits = 2) => {
+  Article.normalizeDigits = function (number, numDigits = 2) {
     let numberString = `${number}`;
     while (numberString.length < numDigits) {
       numberString = `0${numberString}`;
@@ -69,13 +69,13 @@ module.exports = (sequelize, DataTypes) => {
     return numberString;
   };
 
-  Article.getHtmlFormCompatibleDate = (date) => {
+  Article.getHtmlFormCompatibleDate = function (date) {
     const month = Article.normalizeDigits(date.getMonth() + 1);
     const day = Article.normalizeDigits(date.getDate());
     return `${date.getFullYear()}-${month}-${day}`
   };
 
-  Article.getFullReadableDate = (date) => {
+  Article.getFullReadableDate = function (date) {
     const month = date.getMonth();
     const day = date.getDate();
     return `${monthNames[month]} ${day}, ${date.getFullYear()}`;
@@ -83,27 +83,27 @@ module.exports = (sequelize, DataTypes) => {
 
   // Instance Methods
 
-  Article.prototype.getUrl = (x) => {
-    console.log(this, x);
+  Article.prototype.getUrl = function () {
+    console.log(this);
 
     return `/articles/${this.url_snippet}`;
   };
 
-  Article.prototype.getTaglessBody = () => {
+  Article.prototype.getTaglessBody = function () {
     // This was breaking the create view, since body did not exist
     return this.body.replace(/<.?[a-zA-Z]+>/g, '');
   };
 
-  Article.prototype.getTimezoneCorrectedPublishDate = () => {
+  Article.prototype.getTimezoneCorrectedPublishDate = function () {
     return new Date(this.publish_date.getTime() +
       this.publish_date.getTimezoneOffset() * 60000);
   };
 
-  Article.prototype.htmlFormCompatiblePublishDate = () => {
+  Article.prototype.htmlFormCompatiblePublishDate = function () {
     return Article.getHtmlFormCompatibleDate(this.getTimezoneCorrectedPublishDate());
   };
 
-  Article.prototype.readablePublishDate = () => {
+  Article.prototype.readablePublishDate = function () {
     return Article.getFullReadableDate(this.getTimezoneCorrectedPublishDate());
   }
 

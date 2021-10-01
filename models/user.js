@@ -13,17 +13,18 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   // ClassMethods
-  User.associate = (models) => {
+  User.associate = function (models) {
     // associations can be defined here
-  },
-    User.generateHash = (password) => {
-      return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-    }
+  };
+
+  User.generateHash = function (password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+  };
 
   // Instance Methods
-  User.prototype.validPassword = (password) => {
+  User.prototype.validPassword = function (password) {
     return bcrypt.compareSync(password, this.password);
-  }
+  };
 
   return User;
 };

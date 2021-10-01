@@ -67,7 +67,7 @@ router.get('/:articleId', (req, res) => {
           [sequelize.Op.not]: [article.id]
         }
       },
-      order: [['random()'], ['popularity', 'ASC']],
+      order: sequelize.random(),
       // order: 'publish_date DESC',
       // [
       //   Sequelize.fn( 'RAND' ),

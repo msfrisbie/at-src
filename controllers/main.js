@@ -17,9 +17,9 @@ router.get('/', (req, res) => {
     // order: 'publish_date DESC'
   })
     .then((articles) => {
-      console.log(articles);
-
       const featuredArticle = articles.shift();
+
+      console.log(featuredArticle);
       res.render('pages/abovethefold', {
         featuredArticle: featuredArticle,
         articles: articles,
@@ -28,9 +28,9 @@ router.get('/', (req, res) => {
     }, (err) => {
       res.status(500);
     })
-    .finally(() => {
-      models.sequelize.close();
-    });;
+  // .finally(() => {
+  //   models.sequelize.close();
+  // });;
 });
 
 router.get('/news', (req, res) => {

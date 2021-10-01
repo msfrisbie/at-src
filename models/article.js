@@ -83,8 +83,8 @@ module.exports = (sequelize, DataTypes) => {
 
   // Instance Methods
 
-  Article.prototype.getUrl = () => {
-    console.log(this);
+  Article.prototype.getUrl = (x) => {
+    console.log(this, x);
 
     return `/articles/${this.url_snippet}`;
   };

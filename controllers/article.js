@@ -57,8 +57,6 @@ router.get('/:articleId', (req, res) => {
   }
 
   articlePromise.then((article) => {
-    console.log(article);
-
     // If this is returning null, there is probably a bad image URL
     // hitting the site.
     models.Article.findAll({

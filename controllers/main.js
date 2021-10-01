@@ -19,7 +19,8 @@ router.get('/', (req, res) => {
     .then((articles) => {
       const featuredArticle = articles.shift();
 
-      console.log(featuredArticle);
+      console.log(featuredArticle.getUrl);
+
       res.render('pages/abovethefold', {
         featuredArticle: featuredArticle,
         articles: articles,

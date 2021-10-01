@@ -56,13 +56,15 @@ router.get('/:articleId', (req, res) => {
   }
 
   articlePromise.then((article) => {
+    console.log(article);
+
     // If this is returning null, there is probably a bad image URL
     // hitting the site.
     models.Article.findAll({
       where: {
         'is_public': true,
         'id': {
-          '$ne': article.id
+          [sequelize.Op.not]: [article.id]
         }
       },
       order: [['random()'], ['popularity', 'ASC']],
